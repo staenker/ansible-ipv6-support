@@ -2,12 +2,12 @@ staenker.ipv6-support
 =========
 [![Ansible Galaxy](http://img.shields.io/badge/AnsibleGalaxy-staenker.ipv6--support-blue.svg?style=flat)](https://galaxy.ansible.com/list#/roles/2125)
 
-Ensures that ipv6 is either enabled or disabled on a Debian based system.
+Ensures that ipv6 is either enabled or disabled on a Debian- or RHEL-based system.
 
 Requirements
 ------------
 
-A Debian based system is enough
+A Debian- or RHEL-based system is enough
 
 Role Variables
 --------------
