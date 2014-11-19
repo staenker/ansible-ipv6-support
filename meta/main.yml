@@ -1,20 +1,21 @@
 ---
+# Ansible meta file for mgoodness.ipv6-support
+
 galaxy_info:
-  author: Richard Hauswald
-  description: Ensures that ipv6 is either enabled or disabled on a Debian- or RHEL-based system
+  author: Michael Goodness
+  description: Ansible role for configuring IPv6 support on Debian- or RHEL6-based systems
   license: Apache License, Version 2.0
   min_ansible_version: 1.7.2
   platforms:
   - name: Ubuntu
     versions:
-    - all
+      - all
   - name: Debian
     versions:
-    - all
+      - all
   - name: EL
     versions:
-    - all
+      - all
   categories:
-  - system
+    - system
 dependencies: []
-

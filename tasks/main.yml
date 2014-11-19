@@ -1,32 +1,42 @@
 ---
-- name: ensure ipv6 is enabled on all interfaces
+# Ansible tasks file for mgoodness.ipv6-support
+
+- name: enable IPv6 for existing network interfaces
   sysctl: >
     name=net.ipv6.conf.all.disable_ipv6
     value=0
     ignoreerrors=true
     state=present
-  when: enabled
+  when: ipv6_enabled
   
-- name: ensure ipv6 is enabled per default
+- name: enable IPv6 for future network interfaces
   sysctl: >
     name=net.ipv6.conf.default.disable_ipv6
     value=0
     ignoreerrors=true
     state=present
-  when: enabled
+  when: ipv6_enabled
   
-- name: ensure ipv6 is disabled on all interfaces
+- name: enable IPv6 in Postfix
+  command: postconf -e inet_protocols=all
+  when: ipv6_enabled and ipv6_postfix
+
+- name: disable IPv6 for existing network interfaces
   sysctl: >
     name=net.ipv6.conf.all.disable_ipv6
     value=1
     ignoreerrors=true
     state=present
-  when: not enabled
+  when: not ipv6_enabled
   
-- name: ensure ipv6 is disabled per default
+- name: disable IPv6 for future network interfaces
   sysctl: >
     name=net.ipv6.conf.default.disable_ipv6
     value=1
     ignoreerrors=true
     state=present
-  when: not enabled
+  when: not ipv6_enabled
+
+- name: disable IPv6 in Postfix
+  command: postconf -e inet_protocol=ipv4
+  when: not ipv6_enabled and ipv6_postfix

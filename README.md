@@ -1,18 +1,20 @@
-staenker.ipv6-support
-=========
-[![Ansible Galaxy](http://img.shields.io/badge/AnsibleGalaxy-staenker.ipv6--support-blue.svg?style=flat)](https://galaxy.ansible.com/list#/roles/2125)
+ipv6-support
+============
 
-Ensures that ipv6 is either enabled or disabled on a Debian- or RHEL-based system.
+Ansible role for configuring IPv6 support on Debian- or RHEL6-based systems
 
 Requirements
 ------------
 
-A Debian- or RHEL-based system is enough
+None, however there is an option to configure IPv6 support in Postfix if installed.
 
 Role Variables
 --------------
 
- - enabled, default: true
+ defaults:
+
+  - ipv6_enabled: true
+  - ipv6_configure_postfix: false
 
 Dependencies
 ------------
@@ -22,9 +24,11 @@ none
 Example Playbook
 ----------------
 
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: staenker.ipv6-support, enabled: false }
+         - role: mgoodness.ipv6-support
+         - ipv6_enabled: false
+         - ipv6_configure_postfix: true
 
 License
 -------
@@ -34,4 +38,4 @@ Apache License, Version 2.0
 Author Information
 ------------------
 
-Awesome dude
+[Michael Goodness](https://plus.google.com/+MichaelGoodness)

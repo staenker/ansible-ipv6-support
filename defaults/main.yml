@@ -1,1 +1,5 @@
-enabled: true
+---
+# Ansible defaults file for mgoodness.ipv6-support
+
+ipv6_enabled: true
+ipv6_configure_postfix: false
